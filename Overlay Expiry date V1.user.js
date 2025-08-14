@@ -138,8 +138,7 @@
     "root-cause": "root cause",
     "email-sent": "email sent",
     "expiry-date": "expiration date",
-    "final-expiry-date": "final expiry date",
-    "flip-status": "Flip status"  // Changed to match exact case
+    "final-expiry-date": "final expiry date"
   };
 
   // ---------- Helpers ----------
@@ -344,13 +343,12 @@
     const specialTypeValue = document.getElementById("special-type")?.value || "";
     const rootCauseSelect = document.getElementById("root-cause");
     const rootCauseOther  = document.getElementById("root-cause-other");
-    const rootCauseValue    = rootCauseSelect.value === "Others" ? (rootCauseOther.value || "") : (rootCauseSelect.value || "");
+    const rootCauseValue  = rootCauseSelect.value === "Others" ? (rootCauseOther.value || "") : (rootCauseSelect.value || "");
     const emailSentValue  = document.getElementById("email-sent")?.value || "";
     const finalExpiryDateValue = document.getElementById("final-expiry-date")?.value || "";
     const otherDocBreakup = document.getElementById("other-doc-breakup")?.value || "";
     const rejectionReason = document.getElementById("rejection-reason")?.value || "";
     const newAssetCreated = document.getElementById("new-asset-created")?.value || "";
-    const flipStatusValue = document.getElementById("flip-status")?.value || "";
 
     waitForInputAndInject("ctc-type", (ctcType || "").toUpperCase());
     waitForInputAndInject("status-select", toTitleCase(status));
@@ -362,7 +360,6 @@
     waitForInputAndInject("email-sent", emailSentValue);
     waitForInputAndInject("expiry-date", finalExpiryDateValue);
     waitForInputAndInject("special-type", specialTypeValue);
-    waitForInputAndInject("flip-status", flipStatusValue);
   }
 
   function createPopup() {
@@ -472,17 +469,6 @@
           <option value="" selected disabled>Select Yes or No</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>
-        </select>
-      </div>
-
-      <!-- Added Flip Status dropdown with exact label text -->
-      <div style="margin-bottom: 10px;">
-        <label for="flip-status">Flip status:</label><br>
-        <select id="flip-status">
-          <option value="" selected disabled>Select Flip status</option>
-          <option value="Yes- 100% match">Yes- 100% match</option>
-          <option value="Yes- Already flipped">Yes- Already flipped</option>
-          <option value="New AFC< 100% match">New AFC< 100% match</option>
         </select>
       </div>
 
@@ -653,7 +639,6 @@
       document.getElementById("email-sent").value = "";
       document.getElementById("expiry-date").value = "";
       document.getElementById("final-expiry-date").value = "";
-      document.getElementById("flip-status").value = "";
 
       initContainer("vin-container", "vin", "VIN");
       initContainer("lp-container", "lp", "LP");
@@ -712,7 +697,8 @@
         p.style.height = "85vh";
         p.style.overflowY = "auto";
         minimizeBtn.innerHTML = "&#8211;"; // Minimize icon
-        minimizeBtn.title = "Minimize";
+        minim
+izeBtn.title = "Minimize";
       }
     });
   }
